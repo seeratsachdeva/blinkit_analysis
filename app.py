@@ -32,6 +32,9 @@ st.markdown("""
     .stTitle {
         color: #000000;  /* Black for titles */
     }
+    .stText {
+        color: #000000;  /* Black for other text */
+    }
     </style>
 """, unsafe_allow_html=True)
 
