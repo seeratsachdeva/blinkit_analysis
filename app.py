@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="BlinkIT Sales Dashboard", layout="wide")
 
 # Load dataset
-DATA_PATH = "D:/blinkit analysis/BlinkIT Grocery Data (1).csv"
+DATA_PATH = "https://raw.githubusercontent.com/seeratsachdeva/blinkit_analysis/refs/heads/main/BlinkIT%20Grocery%20Data%20(1).csv"
 df = pd.read_csv(DATA_PATH)
 
 # Custom CSS for color scheme (yellow background, green, light gray, black)
@@ -192,8 +192,4 @@ if st.session_state["logged_in"]:
                 st.error(f"An error occurred: {e}")
 
     # Link to Power BI dashboard
-    st.sidebar.write("For more insights, visit the Power BI dashboard [here](https://app.powerbi.com/groups/me/reports/e84e9ac0-73fa-4076-a725-40e8707c88af/0217cb8a74760ca0d5e0?experience=power-bi).")
-
-else:
-    # If not logged in, display the login form
-    login()
+    st
