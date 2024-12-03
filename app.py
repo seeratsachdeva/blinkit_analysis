@@ -151,22 +151,76 @@ if st.session_state["logged_in"]:
         st.title("Item Type Analysis")
         st.subheader("Analyze Sales by Item Type")
 
+        # Chart type selection
+        chart_type = st.selectbox("Select Chart Type", ["Bar Chart", "Line Chart", "Pie Chart", "Area Chart"])
+
         # Aggregate sales by item type
         item_type_sales = df.groupby('Item Type')['Sales'].sum().sort_values(ascending=False)
 
-        st.write("**Sales by Item Type:**")
-        st.bar_chart(item_type_sales)
+        if chart_type == "Bar Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            item_type_sales.plot(kind='bar', color=['yellow', 'green', 'black', 'white'], ax=ax)
+            plt.title('Sales by Item Type (Bar Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
+
+        elif chart_type == "Line Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            item_type_sales.plot(kind='line', marker='o', color='green', ax=ax)
+            plt.title('Sales by Item Type (Line Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
+
+        elif chart_type == "Pie Chart":
+            fig, ax = plt.subplots(figsize=(8, 8))
+            item_type_sales.plot(kind='pie', autopct='%1.1f%%', startangle=90, ax=ax)
+            plt.title('Sales by Item Type (Pie Chart)')
+            st.pyplot(fig)
+
+        elif chart_type == "Area Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            item_type_sales.plot(kind='area', alpha=0.5, ax=ax)
+            plt.title('Sales by Item Type (Area Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
 
     # Outlet Analysis Section (Fix)
     elif section == "Outlet Analysis":
         st.title("Outlet Analysis")
         st.subheader("Analyze Sales by Outlet")
 
+        # Chart type selection
+        chart_type = st.selectbox("Select Chart Type", ["Bar Chart", "Line Chart", "Pie Chart", "Area Chart"])
+
         # Aggregate sales by outlet type
         outlet_sales = df.groupby('Outlet Type')['Sales'].sum().sort_values(ascending=False)
 
-        st.write("**Sales by Outlet Type:**")
-        st.bar_chart(outlet_sales)
+        if chart_type == "Bar Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            outlet_sales.plot(kind='bar', color=['yellow', 'green', 'black', 'white'], ax=ax)
+            plt.title('Sales by Outlet Type (Bar Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
+
+        elif chart_type == "Line Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            outlet_sales.plot(kind='line', marker='o', color='green', ax=ax)
+            plt.title('Sales by Outlet Type (Line Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
+
+        elif chart_type == "Pie Chart":
+            fig, ax = plt.subplots(figsize=(8, 8))
+            outlet_sales.plot(kind='pie', autopct='%1.1f%%', startangle=90, ax=ax)
+            plt.title('Sales by Outlet Type (Pie Chart)')
+            st.pyplot(fig)
+
+        elif chart_type == "Area Chart":
+            fig, ax = plt.subplots(figsize=(10, 5))
+            outlet_sales.plot(kind='area', alpha=0.5, ax=ax)
+            plt.title('Sales by Outlet Type (Area Chart)')
+            plt.ylabel('Total Sales')
+            st.pyplot(fig)
 
     # Custom Analysis Section
     elif section == "Custom Analysis":
