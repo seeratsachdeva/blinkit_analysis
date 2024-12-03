@@ -7,7 +7,10 @@ st.set_page_config(page_title="BlinkIT Sales Dashboard", layout="wide")
 
 # Load dataset
 DATA_PATH = "https://raw.githubusercontent.com/seeratsachdeva/blinkit_analysis/refs/heads/main/BlinkIT%20Grocery%20Data%20(1).csv"
-df = pd.read_csv(DATA_PATH)
+try:
+    df = pd.read_csv(DATA_PATH)
+except Exception as e:
+    st.error(f"Error loading dataset: {e}")
 
 # Custom CSS for color scheme (yellow background, green, light gray, black)
 st.markdown("""
@@ -191,5 +194,5 @@ if st.session_state["logged_in"]:
             except Exception as e:
                 st.error(f"An error occurred: {e}")
 
-    # Link to Power BI dashboard
-    st
+else:
+    login()
