@@ -143,6 +143,28 @@ if st.session_state["logged_in"]:
             plt.ylabel('Sales')
             st.pyplot(fig)
 
+    # Item Type Analysis Section (Fix)
+    elif section == "Item Type Analysis":
+        st.title("Item Type Analysis")
+        st.subheader("Analyze Sales by Item Type")
+
+        # Aggregate sales by item type
+        item_type_sales = df.groupby('Item Type')['Sales'].sum().sort_values(ascending=False)
+
+        st.write("**Sales by Item Type:**")
+        st.bar_chart(item_type_sales)
+
+    # Outlet Analysis Section (Fix)
+    elif section == "Outlet Analysis":
+        st.title("Outlet Analysis")
+        st.subheader("Analyze Sales by Outlet")
+
+        # Aggregate sales by outlet type
+        outlet_sales = df.groupby('Outlet Type')['Sales'].sum().sort_values(ascending=False)
+
+        st.write("**Sales by Outlet Type:**")
+        st.bar_chart(outlet_sales)
+
     # Custom Analysis Section
     elif section == "Custom Analysis":
         st.title("Custom Analysis")
